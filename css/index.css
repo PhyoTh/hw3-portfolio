@@ -149,6 +149,10 @@ footer {
 
 /* media query for tablet */
 @media (max-width: 768px) {
+    body {
+        grid-template-rows: 2.75rem 1fr 1.5rem; /* Increased header height */
+    }
+
     body:has(#file-explorer-toggle:checked) {
         grid-template-columns: 2.5rem 10rem 1fr;
     }
@@ -159,14 +163,14 @@ footer {
 
     header > span {
         min-width: auto;
-        width: calc(100dvw - 5rem);
+        width: min(70%, 25rem); /* Narrower and responsive */
         font-size: 0.8125rem;
-        padding: 0.2rem 0.5rem;
+        padding: 0.35rem 0.75rem; /* More vertical padding */
     }
 
     aside {
         width: 2.5rem;
-        height: calc(100dvh - 3.25rem);
+        height: calc(100dvh - 4.25rem); /* Adjusted for new header height */
     }
 
     aside nav button,
@@ -205,26 +209,28 @@ footer {
 /* media query for mobile */
 @media (max-width: 480px) {
     body {
-        grid-template-rows: 1.75rem 1fr 1.125rem;
+        grid-template-rows: 2.5rem 1fr 1.125rem; /* Increased header height */
+        grid-template-columns: 2rem 0 1fr !important;
     }
 
+    /* override the grid column changes for mobile */
     body:has(#file-explorer-toggle:checked) {
-        grid-template-columns: 2rem 8rem 1fr;
+        grid-template-columns: 2rem 0 1fr !important;
     }
 
     body:has(#file-explorer-toggle:not(:checked)) {
-        grid-template-columns: 2rem 0 1fr;
+        grid-template-columns: 2rem 0 1fr !important;
     }
 
     header > span {
         font-size: 0.75rem;
-        padding: 0.15rem 0.25rem;
-        width: calc(100dvw - 4rem);
+        padding: 0.3rem 0.5rem; /* More vertical padding */
+        width: min(75%, 18rem); /* Narrower and responsive */
     }
 
     aside {
         width: 2rem;
-        height: calc(100dvh - 2.875rem);
+        height: calc(100dvh - 3.625rem); /* Adjusted for new header height */
     }
 
     aside nav button,
@@ -238,8 +244,27 @@ footer {
         height: 1.25rem;
     }
 
+    /* overlay approach for mobile */
     main file-explorer {
+        position: fixed;
+        left: 2rem;
+        top: 2.5rem; /* Adjusted for new header height */
+        bottom: 1.125rem;
+        width: 12rem;
+        z-index: 1000;
+
         font-size: 0.6875rem;
+        box-shadow: 4px 0 16px rgba(0, 0, 0, 0.5);
+
+        /* Smooth slide-in animation */
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    /* Show file explorer as overlay when checked */
+    body:has(#file-explorer-toggle:checked) main file-explorer {
+        display: block;
+        transform: translateX(0);
     }
 
     main file-explorer a {
