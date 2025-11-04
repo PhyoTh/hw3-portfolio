@@ -4,6 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>about.json</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 0.95rem;
+
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+
+            padding: 2rem 3rem;
+            line-height: 1.8;
+        }
+
+        article {
+            max-width: 1000px;
+            counter-reset: line-number;
+        }
+
+        article::before {
+            content: '{';
+
+            display: block;
+            margin-bottom: 1rem;
+
+            color: #ffd700;
+            font-size: 2rem;
+            font-weight: bold;
+
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        article::after {
+            content: '}';
+
+            display: block;
+            margin-top: 3rem;
+
+            color: #ffd700;
+            font-size: 2rem;
+            font-weight: bold;
+
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+    </style>
+    <link rel="stylesheet" href="../css/about.css">
 </head>
 <body>
     <article>
@@ -14,13 +71,13 @@
 
             <picture>
                 <!-- For mobile -->
-                <source type="image/avif" srcset="../assets/avif/geisel-cropped.avif" media="(max-width: 600px)">
-                <source type="image/webp" srcset="../assets/webp/geisel-cropped.webp" media="(max-width: 600px)">
+                <source type="image/avif" srcset="../assets/avif/geisel-cropped.avif" alt="Geisel Library at UC San Diego" media="(max-width: 600px)">
+                <source type="image/webp" srcset="../assets/webp/geisel-cropped.webp" alt="Geisel Library at UC San Diego" media="(max-width: 600px)">
                 <!-- For desktop  -->
-                <source type="image/avif" srcset="../assets/avif/geisel.avif">
-                <source type="image/webp" srcset="../assets/webp/geisel.webp">
+                <source type="image/avif" srcset="../assets/avif/geisel.avif" alt="Geisel Library at UC San Diego">
+                <source type="image/webp" srcset="../assets/webp/geisel.webp" alt="Geisel Library at UC San Diego">
                 <!-- Fallback -->
-                <img src="../assets/geisel-cropped.jpg" alt="Geisel">
+                <img src="../assets/geisel-cropped.jpg" alt="Geisel Library at UC San Diego">
             </picture>
             
             <p>
